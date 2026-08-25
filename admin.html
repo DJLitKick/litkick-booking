@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>DJ LitKick — Booking Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;1,14..32,300;1,14..32,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a class="site-logo" href="index.html">DJ <span class="accent">LitKick</span></a>
+    <a class="nav-cta" href="index.html">Back To Site</a>
+  </header>
+
+  <!-- PASSWORD GATE -->
+  <div class="admin-gate" id="admin-gate">
+    <div class="admin-gate-box">
+      <span class="section-label">Admin Access</span>
+      <div class="form-field">
+        <label for="admin-password">Password</label>
+        <input type="password" id="admin-password" autocomplete="current-password" />
+      </div>
+      <p class="form-error" id="admin-gate-error"></p>
+      <button type="button" class="cta-button" id="admin-gate-submit">Enter</button>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="admin-main">
+    <h1 class="admin-heading">Pending Requests</h1>
+    <p class="form-status" id="admin-status" style="margin-bottom:1.5rem;"></p>
+    <div id="admin-list"></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
