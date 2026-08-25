@@ -6,7 +6,7 @@
 ───────────────────────────────────────── */
 
 /* Paste your EmailJS public key + IDs below. See README.md section "EmailJS setup". */
-const EMAILJS_PUBLIC_KEY = "BUya2SJnz4W6GAoDcT7JT";
+const EMAILJS_PUBLIC_KEY = "-GgrQc42HPZNKRBXX";
 const EMAILJS_SERVICE_ID = "service_r3m65ho";
 const EMAILJS_TEMPLATE_CUSTOMER = "template_m28l8nq";
 const EMAILJS_TEMPLATE_OWNER = "template_c12ce5f";
