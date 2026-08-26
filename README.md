@@ -38,6 +38,16 @@ create view public.booked_dates as
   where status in ('pending', 'confirmed');
 grant select on public.booked_dates to anon;
 
+create view public.upcoming_shows as
+  select
+    event_date,
+    event_type,
+    case when event_type = 'private' then null else location end as location
+  from public.bookings
+  where status = 'confirmed' and event_date >= current_date
+  order by event_date asc;
+grant select on public.upcoming_shows to anon;
+
 create table public.admin_settings (
   id int primary key default 1,
   password_hash text not null,
