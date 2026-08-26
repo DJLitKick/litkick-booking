@@ -50,7 +50,7 @@ values (1, crypt('CHANGE_ME_STRONG_PASSWORD', gen_salt('bf')));
 
 create or replace function public.admin_list_pending(p_password text)
 returns setof public.bookings
-language plpgsql security definer set search_path = public as $$
+language plpgsql security definer set search_path = public, extensions as $$
 begin
   if not exists (select 1 from admin_settings where id = 1 and password_hash = crypt(p_password, password_hash)) then
     raise exception 'invalid password';
@@ -61,7 +61,7 @@ $$;
 
 create or replace function public.admin_update_booking_status(p_password text, p_booking_id uuid, p_new_status text)
 returns void
-language plpgsql security definer set search_path = public as $$
+language plpgsql security definer set search_path = public, extensions as $$
 begin
   if p_new_status not in ('confirmed', 'declined') then raise exception 'invalid status'; end if;
   if not exists (select 1 from admin_settings where id = 1 and password_hash = crypt(p_password, password_hash)) then
@@ -71,8 +71,60 @@ begin
 end;
 $$;
 
+create or replace function public.admin_list_all_bookings(p_password text)
+returns setof public.bookings
+language plpgsql security definer set search_path = public, extensions as $$
+begin
+  if not exists (select 1 from admin_settings where id = 1 and password_hash = crypt(p_password, password_hash)) then
+    raise exception 'invalid password';
+  end if;
+  return query select * from bookings order by event_date asc;
+end;
+$$;
+
+create or replace function public.admin_delete_booking(p_password text, p_booking_id uuid)
+returns void
+language plpgsql security definer set search_path = public, extensions as $$
+begin
+  if not exists (select 1 from admin_settings where id = 1 and password_hash = crypt(p_password, password_hash)) then
+    raise exception 'invalid password';
+  end if;
+  delete from bookings where id = p_booking_id;
+end;
+$$;
+
+create or replace function public.admin_add_booking(
+  p_password text,
+  p_first_name text,
+  p_last_name text,
+  p_location text,
+  p_event_type text,
+  p_technique_needed boolean,
+  p_email text,
+  p_event_date date
+)
+returns public.bookings
+language plpgsql security definer set search_path = public, extensions as $$
+declare
+  new_row public.bookings;
+begin
+  if not exists (select 1 from admin_settings where id = 1 and password_hash = crypt(p_password, password_hash)) then
+    raise exception 'invalid password';
+  end if;
+
+  insert into bookings (first_name, last_name, location, event_type, technique_needed, email, event_date, status)
+  values (p_first_name, p_last_name, p_location, p_event_type, p_technique_needed, p_email, p_event_date, 'confirmed')
+  returning * into new_row;
+
+  return new_row;
+end;
+$$;
+
 grant execute on function public.admin_list_pending(text) to anon;
 grant execute on function public.admin_update_booking_status(text, uuid, text) to anon;
+grant execute on function public.admin_list_all_bookings(text) to anon;
+grant execute on function public.admin_delete_booking(text, uuid) to anon;
+grant execute on function public.admin_add_booking(text, text, text, text, text, boolean, text, date) to anon;
 ```
 
 3. Go to **Project Settings → API**. Copy the **Project URL** and the **`anon` `public`** key (not the `service_role` key — never use that one here).

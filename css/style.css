@@ -497,7 +497,24 @@ a { color: inherit; text-decoration: none; }
 .admin-btn--confirm:hover { background: var(--gold); color: var(--bg); }
 .admin-btn--decline { color: var(--danger); border-color: var(--danger); }
 .admin-btn--decline:hover { background: var(--danger); color: var(--bg); }
+.admin-btn--delete { color: var(--text-muted); border-color: var(--text-muted); }
+.admin-btn--delete:hover { background: var(--text-muted); color: var(--bg); }
 .admin-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.admin-field .v.status-pending { color: var(--gold); }
+.admin-field .v.status-confirmed { color: var(--text); }
+.admin-field .v.status-declined { color: var(--text-muted); }
+.admin-add-panel {
+  border: 1px solid var(--gold-dim);
+  background: rgba(0,0,0,0.5);
+  padding: 1.5rem 1.5rem 2rem;
+  margin-bottom: 3rem;
+}
+.admin-add-hint {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
 
 /* ─────────────────────────────────────────
    MOBILE — < 768px

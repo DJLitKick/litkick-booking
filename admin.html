@@ -33,7 +33,58 @@
 
   <!-- MAIN -->
   <main class="admin-main">
-    <h1 class="admin-heading">Pending Requests</h1>
+
+    <!-- ADD BOOKING -->
+    <div class="admin-add-panel">
+      <span class="section-label">Manual Entry</span>
+      <h2 class="form-heading">Add A Booking</h2>
+      <p class="admin-add-hint">For bookings made outside the site (phone, Instagram, in person). Added as confirmed and blocks the date immediately.</p>
+      <form id="admin-add-form" novalidate>
+        <div class="form-row" style="margin-top:1rem;">
+          <div class="form-field">
+            <label for="add-first-name">First Name</label>
+            <input type="text" id="add-first-name" required />
+          </div>
+          <div class="form-field">
+            <label for="add-last-name">Last Name</label>
+            <input type="text" id="add-last-name" required />
+          </div>
+        </div>
+        <div class="form-field" style="margin-top:1.2rem;">
+          <label for="add-location">Club / Location / City</label>
+          <input type="text" id="add-location" required />
+        </div>
+        <div class="form-row" style="margin-top:1.2rem;">
+          <div class="form-field">
+            <label for="add-event-type">Event Type</label>
+            <select id="add-event-type" required>
+              <option value="" disabled selected>Select an event type</option>
+              <option value="club">Club Night</option>
+              <option value="wedding">Wedding</option>
+              <option value="private">Private Event</option>
+              <option value="business">Business Event</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="add-event-date">Date</label>
+            <input type="date" id="add-event-date" required />
+          </div>
+        </div>
+        <div class="form-checkbox" style="margin-top:1.2rem;">
+          <input type="checkbox" id="add-technique-needed" />
+          <label for="add-technique-needed">Technical equipment (sound/lighting) required</label>
+        </div>
+        <div class="form-field" style="margin-top:1.2rem;">
+          <label for="add-email">Email Address</label>
+          <input type="email" id="add-email" required />
+        </div>
+        <p class="form-error" id="admin-add-error"></p>
+        <p class="form-status" id="admin-add-status"></p>
+        <button type="submit" class="cta-button" id="admin-add-submit" style="margin-top:0.5rem;">Add Booking</button>
+      </form>
+    </div>
+
+    <h1 class="admin-heading">All Bookings</h1>
     <p class="form-status" id="admin-status" style="margin-bottom:1.5rem;"></p>
     <div id="admin-list"></div>
   </main>
