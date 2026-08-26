@@ -40,9 +40,13 @@ function renderShows(shows) {
 
     const detail = document.createElement("span");
     detail.className = "show-detail";
-    detail.textContent = show.event_type === "private"
-      ? "Private Event"
-      : `${SHOWS_EVENT_TYPE_LABELS[show.event_type] || show.event_type} — ${show.location}`;
+    if (show.event_type === "private") {
+      detail.textContent = "Private Event";
+    } else if (show.event_type === "wedding") {
+      detail.textContent = "Wedding – Private";
+    } else {
+      detail.textContent = `${SHOWS_EVENT_TYPE_LABELS[show.event_type] || show.event_type} — ${show.location}`;
+    }
 
     row.appendChild(date);
     row.appendChild(detail);

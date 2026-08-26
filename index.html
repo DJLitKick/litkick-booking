@@ -28,11 +28,9 @@
 
   <!-- UPCOMING SHOWS -->
   <section class="shows-section">
-    <div class="shows-cta">
+    <div class="shows-header">
       <span class="section-label">Where To Catch Me Next</span>
-      <h2 class="shows-cta-heading">Live &amp; Booked</h2>
-      <p class="shows-cta-body">Here's where DJ LitKick is playing next. Got a date in mind for your own event? Grab an open slot below.</p>
-      <a href="#booking-section" class="cta-button shows-cta-btn">Book Now</a>
+      <h2 class="shows-heading">Live &amp; Booked</h2>
     </div>
     <div class="shows-list-panel">
       <div class="shows-list" id="shows-list">
@@ -43,89 +41,96 @@
 
   <!-- BOOKING -->
   <section class="booking-section" id="booking-section">
-
-    <!-- CALENDAR -->
-    <div class="calendar-panel">
-      <div class="cal-header">
-        <button type="button" class="cal-nav-btn" id="cal-prev" aria-label="Previous month">&larr;</button>
-        <span class="cal-month-label" id="cal-month-label">&nbsp;</span>
-        <button type="button" class="cal-nav-btn" id="cal-next" aria-label="Next month">&rarr;</button>
-      </div>
-      <div class="cal-weekdays">
-        <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
-      </div>
-      <div class="cal-grid" id="cal-grid"></div>
-      <div class="cal-legend">
-        <span><span class="legend-dot legend-available"></span>Available</span>
-        <span><span class="legend-dot legend-booked"></span>Booked</span>
-        <span><span class="legend-dot legend-selected"></span>Selected</span>
-      </div>
+    <div class="booking-header">
+      <span class="section-label">Book Now</span>
+      <h2 class="booking-heading">Request Your Date</h2>
     </div>
 
-    <!-- FORM -->
-    <form class="booking-form" id="booking-form" novalidate>
+    <div class="booking-columns">
 
-      <div id="form-fields">
-        <span class="section-label">Request A Booking</span>
-        <h2 class="form-heading">Your Details</h2>
-        <div class="selected-dates-wrap">
-          <span class="form-selected-label">Selected Dates</span>
-          <div class="selected-dates" id="selected-dates">
-            <span class="no-dates-msg">No dates selected yet — click one or more available dates on the calendar.</span>
-          </div>
+      <!-- CALENDAR -->
+      <div class="calendar-panel">
+        <div class="cal-header">
+          <button type="button" class="cal-nav-btn" id="cal-prev" aria-label="Previous month">&larr;</button>
+          <span class="cal-month-label" id="cal-month-label">&nbsp;</span>
+          <button type="button" class="cal-nav-btn" id="cal-next" aria-label="Next month">&rarr;</button>
         </div>
-
-        <div class="form-row" style="margin-top:1.2rem;">
-          <div class="form-field">
-            <label for="first-name">First Name</label>
-            <input type="text" id="first-name" name="first-name" required />
-          </div>
-          <div class="form-field">
-            <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" name="last-name" required />
-          </div>
+        <div class="cal-weekdays">
+          <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
         </div>
-
-        <div class="form-field" style="margin-top:1.2rem;">
-          <label for="location">Club / Location / City</label>
-          <input type="text" id="location" name="location" required />
+        <div class="cal-grid" id="cal-grid"></div>
+        <div class="cal-legend">
+          <span><span class="legend-dot legend-available"></span>Available</span>
+          <span><span class="legend-dot legend-booked"></span>Booked</span>
+          <span><span class="legend-dot legend-selected"></span>Selected</span>
         </div>
-
-        <div class="form-field" style="margin-top:1.2rem;">
-          <label for="event-type">Event Type</label>
-          <select id="event-type" name="event-type" required>
-            <option value="" disabled selected>Select an event type</option>
-            <option value="club">Club Night</option>
-            <option value="wedding">Wedding</option>
-            <option value="private">Private Event</option>
-            <option value="business">Business Event</option>
-          </select>
-        </div>
-
-        <div class="form-checkbox" style="margin-top:1.2rem;">
-          <input type="checkbox" id="technique-needed" name="technique-needed" />
-          <label for="technique-needed">Technical equipment (sound/lighting) required</label>
-        </div>
-
-        <div class="form-field" style="margin-top:1.2rem;">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-
-        <p class="form-error" id="form-error"></p>
-        <p class="form-status" id="form-status"></p>
-
-        <button type="submit" class="cta-button" id="form-submit" style="margin-top:0.5rem;">Send Request</button>
       </div>
 
-      <div class="form-confirmation" id="form-confirmation">
-        <span class="confirm-heading">Your request is being processed.</span>
-        <p class="confirm-body">Thanks — DJ LitKick will review your request and reply directly to your email to confirm the booking. These dates are now held for you:</p>
-        <div class="selected-dates" id="confirmed-dates-list"></div>
-      </div>
+      <!-- FORM -->
+      <form class="booking-form" id="booking-form" novalidate>
 
-    </form>
+        <div id="form-fields">
+          <span class="section-label">Request A Booking</span>
+          <h2 class="form-heading">Your Details</h2>
+          <div class="selected-dates-wrap">
+            <span class="form-selected-label">Selected Dates</span>
+            <div class="selected-dates" id="selected-dates">
+              <span class="no-dates-msg">No dates selected yet — click one or more available dates on the calendar.</span>
+            </div>
+          </div>
 
+          <div class="form-row" style="margin-top:1.2rem;">
+            <div class="form-field">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first-name" required />
+            </div>
+            <div class="form-field">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" name="last-name" required />
+            </div>
+          </div>
+
+          <div class="form-field" style="margin-top:1.2rem;">
+            <label for="location">Club / Location / City</label>
+            <input type="text" id="location" name="location" required />
+          </div>
+
+          <div class="form-field" style="margin-top:1.2rem;">
+            <label for="event-type">Event Type</label>
+            <select id="event-type" name="event-type" required>
+              <option value="" disabled selected>Select an event type</option>
+              <option value="club">Club Night</option>
+              <option value="wedding">Wedding</option>
+              <option value="private">Private Event</option>
+              <option value="business">Business Event</option>
+            </select>
+          </div>
+
+          <div class="form-checkbox" style="margin-top:1.2rem;">
+            <input type="checkbox" id="technique-needed" name="technique-needed" />
+            <label for="technique-needed">Technical equipment (sound/lighting) required</label>
+          </div>
+
+          <div class="form-field" style="margin-top:1.2rem;">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <p class="form-error" id="form-error"></p>
+          <p class="form-status" id="form-status"></p>
+
+          <button type="submit" class="cta-button" id="form-submit" style="margin-top:0.5rem;">Send Request</button>
+        </div>
+
+        <div class="form-confirmation" id="form-confirmation">
+          <span class="confirm-heading">Your request is being processed.</span>
+          <p class="confirm-body">Thanks — DJ LitKick will review your request and reply directly to your email to confirm the booking. These dates are now held for you:</p>
+          <div class="selected-dates" id="confirmed-dates-list"></div>
+        </div>
+
+      </form>
+
+    </div>
   </section>
 
   <!-- FOOTER -->

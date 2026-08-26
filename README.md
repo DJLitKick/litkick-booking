@@ -42,7 +42,7 @@ create view public.upcoming_shows as
   select
     event_date,
     event_type,
-    case when event_type = 'private' then null else location end as location
+    case when event_type in ('private', 'wedding') then null else location end as location
   from public.bookings
   where status = 'confirmed' and event_date >= current_date
   order by event_date asc;
