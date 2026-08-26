@@ -85,7 +85,7 @@ grant execute on function public.admin_update_booking_status(text, uuid, text) t
 **To change the admin password later**, re-run just this in the SQL Editor with your new password:
 ```sql
 update public.admin_settings
-set password_hash = crypt('jU1Ju2tSu3:'), gen_salt('bf'))
+set password_hash = crypt('YOUR_NEW_PASSWORD', gen_salt('bf'))
 where id = 1;
 ```
 
