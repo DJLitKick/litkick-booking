@@ -43,7 +43,7 @@ function renderShows(shows) {
     if (show.event_type === "private") {
       detail.textContent = "Private Event";
     } else if (show.event_type === "wedding") {
-      detail.textContent = "Wedding – Private";
+      detail.textContent = "Wedding Party";
     } else {
       detail.textContent = `${SHOWS_EVENT_TYPE_LABELS[show.event_type] || show.event_type} — ${show.location}`;
     }
