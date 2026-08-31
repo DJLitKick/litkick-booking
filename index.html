@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book DJ LitKick — Munich Hip Hop, Trap &amp; R&amp;B DJ</title>
-  <meta name="description" content="Check availability and request a booking with DJ LitKick — Club, Wedding, Private or Business events in Munich and across Europe." />
+  <title>Book DJ LitKick — Zürich Hip Hop, Trap &amp; R&amp;B DJ</title>
+  <meta name="description" content="Check availability and request a booking with DJ LitKick — Club, Wedding, Private or Business events in Zürich and across Europe." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;1,14..32,300;1,14..32,400&display=swap" rel="stylesheet" />
@@ -21,7 +21,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <span class="hero-label">Munich &nbsp;·&nbsp; Europe</span>
+    <span class="hero-label">Zürich &nbsp;·&nbsp; Europe</span>
     <h1 class="hero-heading">Book Your<br>Night</h1>
     <p class="hero-body">Pick an open date on the calendar, tell us about your event, and DJ LitKick will get back to you directly by email to confirm.</p>
   </section>
@@ -137,13 +137,132 @@
   <footer class="site-footer">
     <span class="footer-logo">DJ <span class="accent">LitKick</span></span>
     <a href="https://www.instagram.com/dj_litkick" target="_blank" rel="noopener noreferrer" class="footer-ig">Instagram &nbsp;@dj_litkick</a>
-    <p class="footer-copy">&copy; 2026 DJ LitKick. All rights reserved. Munich, Germany.</p>
-  </footer>
+    <p class="footer-copy">&copy; 2026 DJ LitKick. All rights reserved. Richterswil, Switzerland.</p>
+    <a class="footer-impressum" href="impressum.html" style="color:#999990;text-decoration:none;font-size:0.8rem;margin-left:0.75rem;">Impressum</a>
+</footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="js/supabase-client.js"></script>
   <script src="js/booking.js"></script>
   <script src="js/shows.js"></script>
+
+  <!-- LITKICK SITE SWITCHER -->
+  <div id="ls-switcher">
+    <button id="ls-tab" aria-label="Switch site" aria-expanded="false">
+      <span class="ls-tab-text">SITES</span>
+    </button>
+    <nav id="ls-panel" aria-hidden="true">
+      <div class="ls-group"><div class="ls-group-title">DJ LitKick</div><a class="ls-link" href="../DJ%20LitKick%20Hub/index.html">Home</a><a class="ls-link" href="../DJ%20LitKick%20Club/index.html">Club</a><a class="ls-link" href="../DJ%20LitKick%20Business/index.html">Business Events</a><a class="ls-link" href="../DJ%20LitKick%20Private%20Event/index.html">Private Events</a><span class="ls-link ls-current" aria-current="page">Booking</span><a class="ls-link" href="../DJ%20LitKick%20Rating/index.html">Rate Your Night</a><a class="ls-link" href="../DJ%20LitKick%20Internal/index.html">Staff Portal</a></div><div class="ls-group"><div class="ls-group-title">Event Production</div><a class="ls-link" href="../EventTechnik/index.html">Eventtechnik</a><a class="ls-link" href="../All%20Set%20Events/index.html">All Set Events</a><a class="ls-link" href="../All%20Set%20Events/technique/index.html">Event Technique</a><a class="ls-link" href="../All%20Set%20Events/bar-catering/index.html">Bar Catering</a><a class="ls-link" href="../BarCatering/index.html">LitKick Bar Catering</a><a class="ls-link" href="../LitKick%20Vibes%20Site/index.html">Home's Place</a></div>
+    </nav>
+  </div>
+  <style>
+    #ls-switcher {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+    }
+    #ls-tab {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      background: rgba(8,8,8,0.55);
+      border: 1px solid rgba(201,168,76,0.35);
+      border-left: none;
+      color: #c9a84c;
+      padding: 1rem 0.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      border-radius: 0 8px 8px 0;
+      opacity: 0.35;
+      transition: opacity 0.35s ease, background 0.35s ease;
+      backdrop-filter: blur(4px);
+    }
+    #ls-switcher:hover #ls-tab,
+    #ls-switcher.open #ls-tab,
+    #ls-tab:focus-visible {
+      opacity: 1;
+      background: rgba(8,8,8,0.85);
+    }
+    #ls-panel {
+      max-height: 80vh;
+      overflow-y: auto;
+      width: 240px;
+      margin-left: -1px;
+      background: rgba(8,8,8,0.92);
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 0 10px 10px 0;
+      backdrop-filter: blur(8px);
+      padding: 0.75rem 0;
+      transform: translateX(-260px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+    #ls-switcher:hover #ls-panel,
+    #ls-switcher.open #ls-panel {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .ls-group { padding: 0.4rem 0 0.6rem; }
+    .ls-group + .ls-group { border-top: 1px solid rgba(201,168,76,0.15); }
+    .ls-group-title {
+      color: #999990;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem 0.35rem;
+    }
+    .ls-link {
+      display: block;
+      padding: 0.4rem 1rem;
+      color: #f0ede8;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    a.ls-link:hover {
+      background: rgba(201,168,76,0.12);
+      color: #c9a84c;
+    }
+    .ls-current {
+      color: #c9a84c;
+      font-weight: 600;
+      cursor: default;
+    }
+    @media (max-width: 680px) {
+      #ls-panel { width: 208px; }
+    }
+  </style>
+  <script>
+    (function () {
+      var el = document.getElementById('ls-switcher');
+      var tab = document.getElementById('ls-tab');
+      var panel = document.getElementById('ls-panel');
+      if (!el || !tab) return;
+      function setOpen(open) {
+        el.classList.toggle('open', open);
+        tab.setAttribute('aria-expanded', open ? 'true' : 'false');
+        panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+      }
+      tab.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(!el.classList.contains('open'));
+      });
+      document.addEventListener('click', function (e) {
+        if (!el.contains(e.target)) setOpen(false);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setOpen(false);
+      });
+    })();
+  </script>
+  <!-- /LITKICK SITE SWITCHER -->
 </body>
 </html>
